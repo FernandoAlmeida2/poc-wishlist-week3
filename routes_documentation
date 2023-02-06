@@ -1,0 +1,27 @@
+POST: /series
+Body: { "name": "Dark", "platform": "Netflix", "genre": "Mystery thriller" }
+
+GET: /series
+
+PATCH: /series
+Body: { "name": "Dark", "status": "finished", "review": "Nice!", "rate": 5 }
+
+DELETE: /series/:id
+
+GET: /ranking/genre
+
+GET: /ranking/platform
+
+POST: /platforms
+Body: { "name": "Globoplay" }
+
+GET: /platforms
+
+PUT: /platforms/:id
+
+POST: /genres
+Body: { "name": "Documentary" }
+
+GET: /genres
+
+PUT: /genres/:id

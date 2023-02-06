@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Serie {
+  id       Int         @id @default(autoincrement())
+  name     String      @unique
+  platform Platform    @relation(fields: [platformId], references: [id])
+  genre    Genre       @relation(fields: [genreId], references: [id])
+  review   String?
+  status   typeStatus?
+  rate     Int?
+
+  platformId Int
+  genreId    Int
+
+  @@map("series")
+}
+
+enum typeStatus {
+  ongoing
+  finished
+}
+
+model Platform {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  Serie Serie[]
+
+  @@map("platforms")
+}
+
+model Genre {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  Serie Serie[]
+
+  @@map("genres")
+}
