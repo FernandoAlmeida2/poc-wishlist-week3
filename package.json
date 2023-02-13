@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx dotenv -e .env.test npx jest",
+    "test": "npx dotenv -e .env.test npx jest -- --runInBand",
+    "test:coverage": "npx dotenv -e .env.test npx jest -- --runInBand --coverage",
     "dev": "nodemon src/server.ts",
     "start": "node dist/server.js",
     "dev:migration-generate": "npx prisma migrate dev",
@@ -33,6 +34,7 @@
   },
   "dependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.20.11",
+    "@faker-js/faker": "^7.6.0",
     "@prisma/client": "^4.9.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
